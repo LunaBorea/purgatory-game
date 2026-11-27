@@ -1,17 +1,60 @@
 [gd_scene format=3 uid="uid://bg81v0ep40pxn"]
 
+[ext_resource type="Shader" uid="uid://cqcgmn4t8a2m1" path="res://Assets/Objects/WatchingTree/tree_blend.gdshader" id="2_irfg1"]
 [ext_resource type="PackedScene" uid="uid://ccnbt8r1lckqy" path="res://Scenes/Entities/player.tscn" id="2_u872a"]
 [ext_resource type="Script" uid="uid://bkhjuv1q4d3lk" path="res://Scripts/layer_manager.gd" id="2_yjsus"]
+[ext_resource type="Texture2D" uid="uid://ogrcjstim8et" path="res://Assets/Objects/WatchingTree/tree8.png" id="3_5sf7f"]
+[ext_resource type="PackedScene" path="res://Scenes/Entities/orb_crate.tscn" id="3_crate"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/player_hud.tscn" id="4_hud"]
+[ext_resource type="PackedScene" path="res://Scenes/Entities/orb_platform.tscn" id="5_platform"]
+[ext_resource type="PackedScene" uid="uid://cuixeh0uak6yi" path="res://Scenes/Entities/the_hunter.tscn" id="6_hunter"]
+[ext_resource type="Script" uid="uid://b2g57ekc2hpvt" path="res://Scenes/Levels/area_2d.gd" id="6_w0lsm"]
+[ext_resource type="PackedScene" path="res://Scenes/Entities/escape_door.tscn" id="7_escape_door"]
+[ext_resource type="PackedScene" path="res://Scenes/Entities/pressure_plate.tscn" id="8_pressure_plate"]
+[ext_resource type="PackedScene" path="res://Scenes/Entities/watching_tree.tscn" id="6_watching_tree"]
+[ext_resource type="PackedScene" path="res://Scenes/Entities/firefly.tscn" id="7_firefly"]
+[ext_resource type="PackedScene" path="res://Scenes/Entities/crow.tscn" id="8_crow"]
+[ext_resource type="PackedScene" path="res://Scenes/Entities/crow_pass.tscn" id="9_crow_pass"]
+[ext_resource type="PackedScene" path="res://Scenes/Entities/tree_leaves.tscn" id="10_tree_leaves"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_asd15"]
+shader = ExtResource("2_irfg1")
+shader_parameter/next_frame = ExtResource("3_5sf7f")
+shader_parameter/frame_blend = 0.0
+shader_parameter/eye_brightness = 0.42
+shader_parameter/glow_strength = 0.65
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rtip2"]
-size = Vector2(4, 16)
+size = Vector2(4, 32)
+
+[sub_resource type="RectangleShape2D" id="SupportShapeSmall"]
+size = Vector2(74.00002, 33.5)
+
+[sub_resource type="RectangleShape2D" id="EscapeGateCollision"]
+size = Vector2(72, 91.63635)
+
+[sub_resource type="RectangleShape2D" id="Ground10LeftSupportShape"]
+size = Vector2(108.8, 33.5)
+
+[sub_resource type="RectangleShape2D" id="Ground9SupportShape"]
+size = Vector2(138.75, 33.5)
+
+[sub_resource type="RectangleShape2D" id="Ground10SupportShape"]
+size = Vector2(67.2, 32)
+
+[sub_resource type="RectangleShape2D" id="SupportShapeWide"]
+size = Vector2(143.36, 32)
+
+[sub_resource type="RectangleShape2D" id="FallResetShape"]
+size = Vector2(1800, 32)
 
 [node name="Main" type="Node" unique_id=767089903]
 
 [node name="Background" type="ColorRect" parent="." unique_id=1788464874]
-offset_top = 24.0
-offset_right = 27.94086
-offset_bottom = 88.0
+offset_left = -3.0
+offset_top = 23.0
+offset_right = 24.94086
+offset_bottom = 87.0
 scale = Vector2(159.766, 8)
 color = Color(0.12, 0.062759995, 0.0564, 1)
 
@@ -47,8 +90,67 @@ offset_bottom = 674.0
 scale = Vector2(38.34194, 6.5431304)
 color = Color(0.23546666, 0.4139393, 0.3771598, 1)
 
+[node name="CrowPass" parent="." unique_id=770057689 instance=ExtResource("9_crow_pass")]
+position = Vector2(1252.0001, 115)
+scale = Vector2(-0.17893371, 0.1672746)
+
+[node name="Crow" parent="." unique_id=1783480905 instance=ExtResource("8_crow")]
+position = Vector2(1399, 189)
+flight_speed = 154.0
+
+[node name="WatchingTree" parent="." unique_id=960954324 instance=ExtResource("6_watching_tree")]
+material = SubResource("ShaderMaterial_asd15")
+position = Vector2(591.00006, 348)
+scale = Vector2(0.46000245, 0.42)
+
+[node name="TreeLeaves" parent="." unique_id=74999902 instance=ExtResource("10_tree_leaves")]
+position = Vector2(578, 148.00003)
+scale = Vector2(0.69999754, 0.65999997)
+
+[node name="Firefly" parent="." unique_id=673289310 instance=ExtResource("7_firefly")]
+position = Vector2(709, 376)
+rotation = 0.8374189
+scale = Vector2(0.72197455, -0.80151814)
+
+[node name="Firefly2" parent="." unique_id=17072893 instance=ExtResource("7_firefly")]
+position = Vector2(663, 383)
+
+[node name="Firefly3" parent="." unique_id=676588878 instance=ExtResource("7_firefly")]
+position = Vector2(575.00006, 320.99994)
+rotation = 1.2715607
+scale = Vector2(0.7612484, 0.8196705)
+
+[node name="Firefly4" parent="." unique_id=623812281 instance=ExtResource("7_firefly")]
+position = Vector2(1185, 405.99994)
+rotation = 1.2715607
+scale = Vector2(0.7612484, 0.8196705)
+
+[node name="Firefly5" parent="." unique_id=332484135 instance=ExtResource("7_firefly")]
+position = Vector2(1414.0001, 342.99997)
+rotation = 2.5647333
+scale = Vector2(0.7612484, 0.8196705)
+
+[node name="Firefly6" parent="." unique_id=417528928 instance=ExtResource("7_firefly")]
+position = Vector2(1387.9999, 303.0001)
+rotation = 3.615077
+scale = Vector2(0.7612484, 0.8196705)
+
 [node name="Player" parent="." unique_id=456008934 instance=ExtResource("2_u872a")]
 position = Vector2(560, 440)
+
+[node name="OrbCrate" parent="." unique_id=1770349636 instance=ExtResource("3_crate")]
+position = Vector2(850, 504)
+
+[node name="OrbCrate2" parent="." unique_id=1708099566 instance=ExtResource("3_crate")]
+position = Vector2(3224, 504)
+
+[node name="OrbCrate3" parent="." unique_id=2134492367 instance=ExtResource("3_crate")]
+position = Vector2(1476, 321.2)
+scale = Vector2(0.8, 0.8)
+current_layer = 3
+match_player_layer_on_interact = true
+
+[node name="PlayerHUD" parent="." unique_id=1759663052 instance=ExtResource("4_hud")]
 
 [node name="LayerManager" type="Node2D" parent="." unique_id=530471857 groups=["LayerManager"]]
 script = ExtResource("2_yjsus")
@@ -64,7 +166,7 @@ scale = Vector2(18, 0.5)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer3/Ground" unique_id=518169756]
-position = Vector2(32, -16)
+position = Vector2(32, -32)
 scale = Vector2(16, 2)
 shape = SubResource("RectangleShape2D_rtip2")
 
@@ -72,7 +174,7 @@ shape = SubResource("RectangleShape2D_rtip2")
 offset_top = -64.0
 offset_right = 8.0
 scale = Vector2(8, 1)
-color = Color(0.57571715, 0.52621675, 0.5179543, 1)
+color = Color(0.32335654, 0.28648856, 0.28083926, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Ground2" type="StaticBody2D" parent="LayerManager/Layer3" unique_id=1557878183]
@@ -81,7 +183,7 @@ scale = Vector2(18, 0.5)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer3/Ground2" unique_id=2050963441]
-position = Vector2(32, -16)
+position = Vector2(32, -32)
 scale = Vector2(16, 2)
 shape = SubResource("RectangleShape2D_rtip2")
 
@@ -89,7 +191,7 @@ shape = SubResource("RectangleShape2D_rtip2")
 offset_top = -64.0
 offset_right = 8.0
 scale = Vector2(8, 1)
-color = Color(0.57571715, 0.52621675, 0.5179543, 1)
+color = Color(0.29398137, 0.25966394, 0.25440675, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Ground5" type="StaticBody2D" parent="LayerManager/Layer3" unique_id=1839762713]
@@ -98,7 +200,7 @@ scale = Vector2(2.239996, 0.5)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer3/Ground5" unique_id=1036435272]
-position = Vector2(32, -16)
+position = Vector2(32, -32)
 scale = Vector2(16, 2)
 shape = SubResource("RectangleShape2D_rtip2")
 
@@ -116,9 +218,138 @@ scale = Vector2(8, 1)
 color = Color(0.40764993, 0.36278275, 0.35530746, 1)
 metadata/_edit_use_anchors_ = true
 
+[node name="SupportPlatform1240" type="StaticBody2D" parent="LayerManager/Layer3" unique_id=270396443]
+position = Vector2(1240, 520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer3/SupportPlatform1240" unique_id=1664207697]
+position = Vector2(43.30005, 12)
+shape = SubResource("SupportShapeSmall")
+
+[node name="SupportPlatform1417" type="StaticBody2D" parent="LayerManager/Layer3" unique_id=1877789770]
+position = Vector2(1417, 520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer3/SupportPlatform1417" unique_id=1811936727]
+position = Vector2(41, 14.5)
+shape = SubResource("SupportShapeSmall")
+
+[node name="SupportPlatform1576" type="StaticBody2D" parent="LayerManager/Layer3" unique_id=394769155]
+position = Vector2(1576, 520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer3/SupportPlatform1576" unique_id=1788224271]
+position = Vector2(37.999977, 49)
+shape = SubResource("SupportShapeSmall")
+
+[node name="SupportPlatform1943" type="StaticBody2D" parent="LayerManager/Layer3" unique_id=1693831387]
+position = Vector2(1943, 520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer3/SupportPlatform1943" unique_id=131452851]
+position = Vector2(38.999977, 16)
+shape = SubResource("SupportShapeSmall")
+
+[node name="SupportPlatform2136" type="StaticBody2D" parent="LayerManager/Layer3" unique_id=914154798]
+position = Vector2(2136, 520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer3/SupportPlatform2136" unique_id=876465922]
+position = Vector2(39.0001, 17)
+shape = SubResource("SupportShapeSmall")
+
+[node name="SupportPlatform2317" type="StaticBody2D" parent="LayerManager/Layer3" unique_id=756902238 groups=["LayerDownLocked"]]
+position = Vector2(2317, 520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer3/SupportPlatform2317" unique_id=1150005492]
+position = Vector2(40.0001, 15)
+shape = SubResource("SupportShapeSmall")
+
+[node name="SupportPlatform2494" type="StaticBody2D" parent="LayerManager/Layer3" unique_id=393289912 groups=["LayerDownLocked"]]
+position = Vector2(2494, 520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer3/SupportPlatform2494" unique_id=1177172853]
+position = Vector2(38.0001, 17)
+shape = SubResource("SupportShapeSmall")
+
+[node name="EscapeGateBlockerL3" type="AnimatableBody2D" parent="LayerManager/Layer3" unique_id=786950872 groups=["EscapeGateBlockers"]]
+position = Vector2(2697, 295.5)
+scale = Vector2(1.375, 1.375)
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer3/EscapeGateBlockerL3" unique_id=1757772001]
+position = Vector2(0, 70)
+shape = SubResource("EscapeGateCollision")
+
+[node name="OrbPlatform" parent="LayerManager/Layer3" unique_id=252267087 instance=ExtResource("5_platform")]
+position = Vector2(2473, 278)
+scale = Vector2(0.58, 0.58)
+
+[node name="OrbPlatform2" parent="LayerManager/Layer3" unique_id=205848536 instance=ExtResource("5_platform")]
+position = Vector2(1826.9999, 483.99997)
+scale = Vector2(0.58, 0.58)
+ground_parent_path = NodePath("../../Layer1")
+ground_position = Vector2(1463, 388)
+
+[node name="Ground6SupportPlatform" type="StaticBody2D" parent="LayerManager/Layer3" unique_id=1091602071 groups=["LayerDownLocked"]]
+position = Vector2(1655, 329)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer3/Ground6SupportPlatform" unique_id=515025453]
+position = Vector2(38.999977, 72)
+shape = SubResource("SupportShapeSmall")
+
+[node name="Ground7SupportPlatform" type="StaticBody2D" parent="LayerManager/Layer3" unique_id=2081726196 groups=["Ground7ToggleSupport", "LayerDownLocked"]]
+position = Vector2(1795, 302)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer3/Ground7SupportPlatform" unique_id=743918577]
+position = Vector2(37.999977, 48)
+shape = SubResource("SupportShapeSmall")
+disabled = true
+
+[node name="Ground10LeftSupportPlatform" type="StaticBody2D" parent="LayerManager/Layer3" unique_id=2134492365 groups=["LayerDownLocked"]]
+position = Vector2(1409.2, 302)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer3/Ground10LeftSupportPlatform" unique_id=2134492366]
+position = Vector2(54.4, 48)
+shape = SubResource("Ground10LeftSupportShape")
+
+[node name="Ground8SupportPlatform" type="StaticBody2D" parent="LayerManager/Layer3" unique_id=387956634 groups=["LayerDownLocked"]]
+position = Vector2(1935, 275)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer3/Ground8SupportPlatform" unique_id=2088850153]
+position = Vector2(40.999977, 50)
+shape = SubResource("SupportShapeSmall")
+
+[node name="Ground9SupportPlatform" type="StaticBody2D" parent="LayerManager/Layer3" unique_id=858936313 groups=["LayerDownLocked"]]
+position = Vector2(2075, 248)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer3/Ground9SupportPlatform" unique_id=1518245496]
+position = Vector2(72, 50)
+shape = SubResource("Ground9SupportShape")
+
+[node name="Ground9RightSupportPlatform" type="StaticBody2D" parent="LayerManager/Layer3" unique_id=1342198146 groups=["LayerDownLocked"]]
+position = Vector2(2263, 250)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer3/Ground9RightSupportPlatform" unique_id=596451105]
+position = Vector2(158, 49)
+shape = SubResource("Ground9SupportShape")
+
+[node name="Ground10SupportPlatform" type="StaticBody2D" parent="LayerManager/Layer3" unique_id=1912363485 groups=["Ground10Support", "LayerDownLocked"]]
+position = Vector2(1463, 329)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer3/Ground10SupportPlatform" unique_id=1913531953]
+position = Vector2(35.000023, 53)
+shape = SubResource("Ground10SupportShape")
+disabled = true
+
 [node name="Layer2" type="Node2D" parent="LayerManager" unique_id=541892398]
 modulate = Color(0.8235294, 0.8235294, 0.8235294, 1)
 metadata/_edit_lock_ = true
+
+[node name="EscapeGateBlockerL2" type="AnimatableBody2D" parent="LayerManager/Layer2" unique_id=1807843335 groups=["EscapeGateBlockers"]]
+position = Vector2(2697, 327.5)
+scale = Vector2(1.375, 1.375)
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer2/EscapeGateBlockerL2" unique_id=1613952139]
+position = Vector2(0, 94.18181)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("EscapeGateCollision")
 
 [node name="Ground" type="StaticBody2D" parent="LayerManager/Layer2" unique_id=937467975]
 position = Vector2(0, 552)
@@ -126,7 +357,7 @@ scale = Vector2(18, 0.5)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer2/Ground" unique_id=1392604211]
-position = Vector2(32, -16)
+position = Vector2(32, -32)
 scale = Vector2(16, 2)
 shape = SubResource("RectangleShape2D_rtip2")
 
@@ -134,7 +365,7 @@ shape = SubResource("RectangleShape2D_rtip2")
 offset_top = -64.0
 offset_right = 8.0
 scale = Vector2(8, 1)
-color = Color(0.57571715, 0.52621675, 0.5179543, 1)
+color = Color(0.20094106, 0.17525083, 0.17131725, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Ground4" type="StaticBody2D" parent="LayerManager/Layer2" unique_id=290481042]
@@ -143,7 +374,7 @@ scale = Vector2(18, 0.5)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer2/Ground4" unique_id=37553215]
-position = Vector2(32, -16)
+position = Vector2(32, -32)
 scale = Vector2(16, 2)
 shape = SubResource("RectangleShape2D_rtip2")
 
@@ -156,11 +387,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Ground2" type="StaticBody2D" parent="LayerManager/Layer2" unique_id=2057447417]
 position = Vector2(1240, 552)
-scale = Vector2(1.2000008, 0.5)
+scale = Vector2(1.35, 0.561)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer2/Ground2" unique_id=270836724]
-position = Vector2(32, -16)
+position = Vector2(32, -32)
 scale = Vector2(16, 2)
 shape = SubResource("RectangleShape2D_rtip2")
 
@@ -184,7 +415,7 @@ scale = Vector2(1.2000008, 0.5)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer2/Ground3" unique_id=518412951]
-position = Vector2(32, -16)
+position = Vector2(32, -32)
 scale = Vector2(16, 2)
 shape = SubResource("RectangleShape2D_rtip2")
 
@@ -202,13 +433,13 @@ scale = Vector2(8, 1)
 color = Color(0.43850598, 0.39296445, 0.3859772, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Ground6" type="StaticBody2D" parent="LayerManager/Layer2" unique_id=117641719]
+[node name="Ground6" type="StaticBody2D" parent="LayerManager/Layer2" unique_id=117641719 groups=["LayerDownLocked"]]
 position = Vector2(1943.0001, 552)
 scale = Vector2(1.2000008, 0.5)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer2/Ground6" unique_id=494292878]
-position = Vector2(32, -16)
+position = Vector2(32, -32)
 scale = Vector2(16, 2)
 shape = SubResource("RectangleShape2D_rtip2")
 
@@ -226,13 +457,13 @@ scale = Vector2(8, 1)
 color = Color(0.43850598, 0.39296445, 0.3859772, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Ground7" type="StaticBody2D" parent="LayerManager/Layer2" unique_id=268635744]
+[node name="Ground7" type="StaticBody2D" parent="LayerManager/Layer2" unique_id=268635744 groups=["LayerDownLocked"]]
 position = Vector2(2136, 552)
 scale = Vector2(1.2000008, 0.5)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer2/Ground7" unique_id=2095611112]
-position = Vector2(32, -16)
+position = Vector2(32, -32)
 scale = Vector2(16, 2)
 shape = SubResource("RectangleShape2D_rtip2")
 
@@ -250,13 +481,13 @@ scale = Vector2(8, 1)
 color = Color(0.43850598, 0.39296445, 0.3859772, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Ground8" type="StaticBody2D" parent="LayerManager/Layer2" unique_id=1987702854]
+[node name="Ground8" type="StaticBody2D" parent="LayerManager/Layer2" unique_id=1987702854 groups=["LayerDownLocked"]]
 position = Vector2(2317.0002, 552)
 scale = Vector2(1.2000008, 0.5)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer2/Ground8" unique_id=1601897834]
-position = Vector2(32, -16)
+position = Vector2(32, -32)
 scale = Vector2(16, 2)
 shape = SubResource("RectangleShape2D_rtip2")
 
@@ -274,13 +505,13 @@ scale = Vector2(8, 1)
 color = Color(0.43850598, 0.39296445, 0.3859772, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Ground9" type="StaticBody2D" parent="LayerManager/Layer2" unique_id=152437554]
+[node name="Ground9" type="StaticBody2D" parent="LayerManager/Layer2" unique_id=152437554 groups=["LayerDownLocked"]]
 position = Vector2(2494.0002, 552)
 scale = Vector2(1.2000008, 0.5)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer2/Ground9" unique_id=900599743]
-position = Vector2(32, -16)
+position = Vector2(32, -32)
 scale = Vector2(16, 2)
 shape = SubResource("RectangleShape2D_rtip2")
 
@@ -298,16 +529,111 @@ scale = Vector2(8, 1)
 color = Color(0.43850598, 0.39296445, 0.3859772, 1)
 metadata/_edit_use_anchors_ = true
 
+[node name="SupportPlatform1576" type="StaticBody2D" parent="LayerManager/Layer2" unique_id=1006642100]
+position = Vector2(1576, 552)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer2/SupportPlatform1576" unique_id=2035695693]
+position = Vector2(37.999977, 17)
+shape = SubResource("SupportShapeSmall")
+
+[node name="SupportPlatform1752" type="StaticBody2D" parent="LayerManager/Layer2" unique_id=2133665440]
+position = Vector2(1752, 552)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer2/SupportPlatform1752" unique_id=1216260283]
+position = Vector2(71.68, -16)
+shape = SubResource("SupportShapeWide")
+
+[node name="Ground6SupportPlatform" type="StaticBody2D" parent="LayerManager/Layer2" unique_id=3730353 groups=["LayerDownLocked"]]
+position = Vector2(1655, 361)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer2/Ground6SupportPlatform" unique_id=768074680]
+position = Vector2(39.999977, 47)
+shape = SubResource("SupportShapeSmall")
+
+[node name="Ground7SupportPlatform" type="StaticBody2D" parent="LayerManager/Layer2" unique_id=489268753 groups=["Ground7ToggleSupport", "LayerDownLocked"]]
+position = Vector2(1795, 334)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer2/Ground7SupportPlatform" unique_id=843349376]
+position = Vector2(37.999977, 46)
+shape = SubResource("SupportShapeSmall")
+disabled = true
+
+[node name="Ground10LeftSupportPlatform" type="StaticBody2D" parent="LayerManager/Layer2" unique_id=2134492363 groups=["LayerDownLocked"]]
+position = Vector2(1409.2, 334)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer2/Ground10LeftSupportPlatform" unique_id=2134492364]
+position = Vector2(54.4, 46)
+shape = SubResource("Ground10LeftSupportShape")
+
+[node name="Ground8SupportPlatform" type="StaticBody2D" parent="LayerManager/Layer2" unique_id=452704962 groups=["LayerDownLocked"]]
+position = Vector2(1935, 307)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer2/Ground8SupportPlatform" unique_id=1739660474]
+position = Vector2(39.999977, 46)
+shape = SubResource("SupportShapeSmall")
+
+[node name="Ground9SupportPlatform" type="StaticBody2D" parent="LayerManager/Layer2" unique_id=1061777138 groups=["LayerDownLocked"]]
+position = Vector2(2075, 280)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer2/Ground9SupportPlatform" unique_id=1256960023]
+position = Vector2(72, 48)
+shape = SubResource("Ground9SupportShape")
+
+[node name="Ground9RightSupportPlatform" type="StaticBody2D" parent="LayerManager/Layer2" unique_id=1226329169 groups=["LayerDownLocked"]]
+position = Vector2(2267, 280)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer2/Ground9RightSupportPlatform" unique_id=68730568]
+position = Vector2(159, 48)
+shape = SubResource("Ground9SupportShape")
+
+[node name="Ground10SupportPlatform" type="StaticBody2D" parent="LayerManager/Layer2" unique_id=8577493 groups=["Ground10Support", "LayerDownLocked"]]
+position = Vector2(1463, 361)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer2/Ground10SupportPlatform" unique_id=361985336]
+position = Vector2(35.000023, 53)
+shape = SubResource("Ground10SupportShape")
+disabled = true
+
+[node name="TheHunter" parent="LayerManager/Layer2" unique_id=80229388 instance=ExtResource("6_hunter")]
+position = Vector2(700, 520)
+
+[node name="TheHunter2" parent="LayerManager/Layer2" unique_id=1648377916 instance=ExtResource("6_hunter")]
+position = Vector2(2175, 525)
+scale = Vector2(0.425, 0.425)
+require_matching_layer = false
+detection_radius = 448.0
+bite_radius = 178.0
+activation_platform_path = NodePath("../../Layer3/OrbPlatform")
+damage_recoil_multiplier = 0.5
+
+[node name="TheHunter3" parent="LayerManager/Layer2" unique_id=1395056201 instance=ExtResource("6_hunter")]
+position = Vector2(2376, 524)
+scale = Vector2(0.425, 0.425)
+require_matching_layer = false
+detection_radius = 448.0
+bite_radius = 178.0
+activation_platform_path = NodePath("../../Layer3/OrbPlatform")
+damage_recoil_multiplier = 0.5
+
+[node name="TheHunter4" parent="LayerManager/Layer2" unique_id=1383860169 instance=ExtResource("6_hunter")]
+position = Vector2(1957, 314.99997)
+scale = Vector2(0.425, 0.425)
+require_matching_layer = false
+detection_radius = 448.0
+bite_radius = 178.0
+activation_platform_path = NodePath("../../Layer3/OrbPlatform")
+damage_recoil_multiplier = 0.5
+
 [node name="Layer1" type="Node2D" parent="LayerManager" unique_id=990853741]
-metadata/_edit_lock_ = true
 
 [node name="Ground5" type="StaticBody2D" parent="LayerManager/Layer1" unique_id=894772816]
-position = Vector2(1752.0001, 584)
+position = Vector2(1656, 584)
 scale = Vector2(1.2000008, 0.5)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer1/Ground5" unique_id=133003470]
-position = Vector2(32, -16)
+position = Vector2(32, -32)
 scale = Vector2(16, 2)
 shape = SubResource("RectangleShape2D_rtip2")
 
@@ -315,7 +641,7 @@ shape = SubResource("RectangleShape2D_rtip2")
 offset_top = -64.0
 offset_right = 8.0
 scale = Vector2(8, 1)
-color = Color(0.57571715, 0.52621675, 0.5179543, 1)
+color = Color(0.53900033, 0.53900033, 0.53900033, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect2" type="ColorRect" parent="LayerManager/Layer1/Ground5" unique_id=25149103]
@@ -331,7 +657,7 @@ scale = Vector2(18, 0.5)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer1/Ground" unique_id=1502857119]
-position = Vector2(32, -16)
+position = Vector2(32, -32)
 scale = Vector2(16, 2)
 shape = SubResource("RectangleShape2D_rtip2")
 
@@ -339,14 +665,14 @@ shape = SubResource("RectangleShape2D_rtip2")
 offset_top = -64.0
 offset_right = 8.0
 scale = Vector2(8, 1)
-color = Color(0.57571715, 0.52621675, 0.5179543, 1)
+color = Color(0.13473421, 0.115518875, 0.11257743, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect2" type="ColorRect" parent="LayerManager/Layer1/Ground" unique_id=2097773507]
 offset_right = 8.0
 offset_bottom = 64.0
 scale = Vector2(8, 1)
-color = Color(0.48668993, 0.43843925, 0.43103063, 1)
+color = Color(0.10829399, 0.0920996, 0.08940723, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Ground2" type="StaticBody2D" parent="LayerManager/Layer1" unique_id=349929163]
@@ -355,7 +681,7 @@ scale = Vector2(18, 0.5)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer1/Ground2" unique_id=51992860]
-position = Vector2(32, -16)
+position = Vector2(32, -32)
 scale = Vector2(16, 2)
 shape = SubResource("RectangleShape2D_rtip2")
 
@@ -379,7 +705,7 @@ scale = Vector2(1.2000008, 0.5)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer1/Ground4" unique_id=229871297]
-position = Vector2(32, -16)
+position = Vector2(32, -32)
 scale = Vector2(16, 2)
 shape = SubResource("RectangleShape2D_rtip2")
 
@@ -396,6 +722,222 @@ offset_bottom = 64.0
 scale = Vector2(8, 1)
 color = Color(0.48668993, 0.43843925, 0.43103063, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="Ground6" type="StaticBody2D" parent="LayerManager/Layer1" unique_id=236480697 groups=["LayerDownLocked"]]
+position = Vector2(1656.0001, 415)
+scale = Vector2(1.2000008, 0.5)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer1/Ground6" unique_id=1187280791]
+position = Vector2(32, -32)
+scale = Vector2(16, 2)
+shape = SubResource("RectangleShape2D_rtip2")
+
+[node name="ColorRect" type="ColorRect" parent="LayerManager/Layer1/Ground6" unique_id=696448726]
+offset_top = -64.0
+offset_right = 8.0
+scale = Vector2(8, 1)
+color = Color(0.57571715, 0.52621675, 0.5179543, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="LayerManager/Layer1/Ground6" unique_id=1489426181]
+offset_right = 8.0
+offset_bottom = 64.0
+scale = Vector2(8, 1)
+color = Color(0.48668993, 0.43843925, 0.43103063, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Ground7" type="StaticBody2D" parent="LayerManager/Layer1" unique_id=134161656 groups=["LayerDownLocked"]]
+visible = false
+position = Vector2(1795, 366)
+scale = Vector2(1.2000008, 0.5)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer1/Ground7" unique_id=1872017181]
+position = Vector2(32, -32)
+scale = Vector2(16, 2)
+shape = SubResource("RectangleShape2D_rtip2")
+disabled = true
+
+[node name="ColorRect" type="ColorRect" parent="LayerManager/Layer1/Ground7" unique_id=756299330]
+offset_top = -64.0
+offset_right = 8.0
+scale = Vector2(8, 1)
+color = Color(0.57571715, 0.52621675, 0.5179543, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="LayerManager/Layer1/Ground7" unique_id=1019080838]
+offset_right = 8.0
+offset_bottom = 64.0
+scale = Vector2(8, 1)
+color = Color(0.48668993, 0.43843925, 0.43103063, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Ground10Left" type="StaticBody2D" parent="LayerManager/Layer1" unique_id=2134492359 groups=["LayerDownLocked"]]
+position = Vector2(1409.2, 366)
+scale = Vector2(1.7, 0.5)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer1/Ground10Left" unique_id=2134492360]
+position = Vector2(32, -32)
+scale = Vector2(16, 2)
+shape = SubResource("RectangleShape2D_rtip2")
+
+[node name="ColorRect" type="ColorRect" parent="LayerManager/Layer1/Ground10Left" unique_id=2134492361]
+offset_top = -64.0
+offset_right = 8.0
+scale = Vector2(8, 1)
+color = Color(0.57571715, 0.52621675, 0.5179543, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="LayerManager/Layer1/Ground10Left" unique_id=2134492362]
+offset_right = 8.0
+offset_bottom = 64.0
+scale = Vector2(8, 1)
+color = Color(0.48668993, 0.43843925, 0.43103063, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Ground10LeftPressurePlate" parent="LayerManager/Layer1" unique_id=2134492368 instance=ExtResource("8_pressure_plate")]
+position = Vector2(1424.2, 334)
+scale = Vector2(0.75, 0.75)
+required_crate_path = NodePath("../../../OrbCrate3")
+controlled_platform_path = NodePath("../../Layer1/Ground7")
+supporting_collision_group = &"Ground7ToggleSupport"
+
+[node name="Ground8" type="StaticBody2D" parent="LayerManager/Layer1" unique_id=2134492358 groups=["LayerDownLocked"]]
+position = Vector2(1935, 339)
+scale = Vector2(1.2000008, 0.5)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer1/Ground8" unique_id=1478096309]
+position = Vector2(32, -32)
+scale = Vector2(16, 2)
+shape = SubResource("RectangleShape2D_rtip2")
+
+[node name="ColorRect" type="ColorRect" parent="LayerManager/Layer1/Ground8" unique_id=1816476574]
+offset_top = -64.0
+offset_right = 8.0
+scale = Vector2(8, 1)
+color = Color(0.57571715, 0.52621675, 0.5179543, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="LayerManager/Layer1/Ground8" unique_id=1364192428]
+offset_right = 8.0
+offset_bottom = 64.0
+scale = Vector2(8, 1)
+color = Color(0.48668993, 0.43843925, 0.43103063, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Ground9" type="StaticBody2D" parent="LayerManager/Layer1" unique_id=506582780 groups=["LayerDownLocked"]]
+position = Vector2(2075, 312)
+scale = Vector2(2.2500014, 0.5)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer1/Ground9" unique_id=1497717282]
+position = Vector2(32, -32)
+scale = Vector2(16, 2)
+shape = SubResource("RectangleShape2D_rtip2")
+
+[node name="ColorRect" type="ColorRect" parent="LayerManager/Layer1/Ground9" unique_id=16217365]
+offset_top = -64.0
+offset_right = 8.0
+scale = Vector2(8, 1)
+color = Color(0.57571715, 0.52621675, 0.5179543, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="LayerManager/Layer1/Ground9" unique_id=200499915]
+offset_right = 8.0
+offset_bottom = 64.0
+scale = Vector2(8, 1)
+color = Color(0.48668993, 0.43843925, 0.43103063, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Ground9Right" type="StaticBody2D" parent="LayerManager/Layer1" unique_id=256406339 groups=["LayerDownLocked"]]
+position = Vector2(2353, 313)
+scale = Vector2(2.2500014, 0.5)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer1/Ground9Right" unique_id=278755172]
+position = Vector2(32, -32)
+scale = Vector2(16, 2)
+shape = SubResource("RectangleShape2D_rtip2")
+
+[node name="ColorRect" type="ColorRect" parent="LayerManager/Layer1/Ground9Right" unique_id=1348703439]
+offset_top = -64.0
+offset_right = 8.0
+scale = Vector2(8, 1)
+color = Color(0.57571715, 0.52621675, 0.5179543, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="LayerManager/Layer1/Ground9Right" unique_id=385234148]
+offset_right = 8.0
+offset_bottom = 64.0
+scale = Vector2(8, 1)
+color = Color(0.48668993, 0.43843925, 0.43103063, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="EscapeGateBlockerL1" type="AnimatableBody2D" parent="LayerManager/Layer1" unique_id=1872320783 groups=["EscapeGateBlockers"]]
+position = Vector2(2697, 359.5)
+scale = Vector2(1.375, 1.375)
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer1/EscapeGateBlockerL1" unique_id=481682957]
+position = Vector2(0, 70)
+shape = SubResource("EscapeGateCollision")
+
+[node name="EscapeGate" parent="LayerManager/Layer1" unique_id=358938542 instance=ExtResource("7_escape_door")]
+position = Vector2(2697, 520.00006)
+scale = Vector2(1.375, 1.375)
+platform_path = NodePath("../../Layer3/OrbPlatform")
+
+[node name="SupportPlatform1240" type="StaticBody2D" parent="LayerManager/Layer1" unique_id=1177062555]
+position = Vector2(1240, 584)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer1/SupportPlatform1240" unique_id=1630055231]
+position = Vector2(38.4, -16)
+shape = SubResource("SupportShapeSmall")
+
+[node name="SupportPlatform1417" type="StaticBody2D" parent="LayerManager/Layer1" unique_id=322896770]
+position = Vector2(1417, 584)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer1/SupportPlatform1417" unique_id=1968979901]
+position = Vector2(38.4, -16)
+shape = SubResource("SupportShapeSmall")
+
+[node name="SupportPlatform1943" type="StaticBody2D" parent="LayerManager/Layer1" unique_id=1870166005]
+position = Vector2(1943, 584)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer1/SupportPlatform1943" unique_id=1550696048]
+position = Vector2(38.4, -16)
+shape = SubResource("SupportShapeSmall")
+
+[node name="SupportPlatform2136" type="StaticBody2D" parent="LayerManager/Layer1" unique_id=1472858723]
+position = Vector2(2136, 584)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer1/SupportPlatform2136" unique_id=1014250936]
+position = Vector2(38.4, -16)
+shape = SubResource("SupportShapeSmall")
+
+[node name="SupportPlatform2317" type="StaticBody2D" parent="LayerManager/Layer1" unique_id=748767521 groups=["LayerDownLocked"]]
+position = Vector2(2317, 584)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer1/SupportPlatform2317" unique_id=1928454327]
+position = Vector2(38.4, -16)
+shape = SubResource("SupportShapeSmall")
+
+[node name="SupportPlatform2494" type="StaticBody2D" parent="LayerManager/Layer1" unique_id=267041026 groups=["LayerDownLocked"]]
+position = Vector2(2494, 584)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer1/SupportPlatform2494" unique_id=1623590773]
+position = Vector2(38.4, -16)
+shape = SubResource("SupportShapeSmall")
+
+[node name="Ground5SupportPlatform" type="StaticBody2D" parent="LayerManager/Layer1" unique_id=2046057107]
+position = Vector2(1656, 584)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LayerManager/Layer1/Ground5SupportPlatform" unique_id=411575602]
+position = Vector2(38.4, -16)
+shape = SubResource("SupportShapeSmall")
 
 [node name="WhiteBoxes" type="Node2D" parent="." unique_id=2058884979]
 
@@ -643,3 +1185,12 @@ offset_top = 56.0
 offset_right = 4432.0
 offset_bottom = 96.0
 scale = Vector2(1.1999999, 1.1999999)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=338758549]
+position = Vector2(1572, 958)
+scale = Vector2(2.685, 2.685)
+collision_layer = 0
+script = ExtResource("6_w0lsm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1685416252]
+shape = SubResource("FallResetShape")

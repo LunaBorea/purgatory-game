@@ -1,0 +1,100 @@
+[gd_resource type="AnimationLibrary" format=3 uid="uid://5if2rpv7fm83"]
+
+[sub_resource type="Animation" id="AnimationIdle"]
+resource_name = "Idle"
+length = 0.001
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Idle"],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="AnimationJumping"]
+resource_name = "Jumping"
+length = 0.001
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Jumping"],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="AnimationJumpingToLand"]
+resource_name = "Jumping-To-Land"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Jumping-To-Land"],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="AnimationWalking"]
+resource_name = "Walking"
+length = 0.001
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Walking"],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="AnimationWalkingToIdle"]
+resource_name = "Walking-To-Idle"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Walking-To-Idle"],
+"method": &"play"
+}]
+}
+
+[resource]
+_data = {
+&"Idle": SubResource("AnimationIdle"),
+&"Jumping": SubResource("AnimationJumping"),
+&"Jumping-To-Land": SubResource("AnimationJumpingToLand"),
+&"Walking": SubResource("AnimationWalking"),
+&"Walking-To-Idle": SubResource("AnimationWalkingToIdle")
+}

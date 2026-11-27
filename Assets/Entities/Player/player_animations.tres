@@ -1,0 +1,149 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dq5be05jkl7j4"]
+
+[ext_resource type="Texture2D" uid="uid://20wqxprbauqa" path="res://Assets/Entities/Player/Idle/Character Idle Animation 00.png" id="frame_0"]
+[ext_resource type="Texture2D" uid="uid://b14nsnmfm87t4" path="res://Assets/Entities/Player/Idle/Character Idle Animation 01.png" id="frame_1"]
+[ext_resource type="Texture2D" uid="uid://cn7807m1yr7l4" path="res://Assets/Entities/Player/Idle/Character Idle Animation 02.png" id="frame_2"]
+[ext_resource type="Texture2D" uid="uid://da1ppuyxos6vx" path="res://Assets/Entities/Player/Idle/Character Idle Animation 03.png" id="frame_3"]
+[ext_resource type="Texture2D" uid="uid://05lhl63q8q6d" path="res://Assets/Entities/Player/Idle/Character Idle Animation 04.png" id="frame_4"]
+[ext_resource type="Texture2D" uid="uid://bx5hnrawv1ouc" path="res://Assets/Entities/Player/Idle/Character Idle Animation 05.png" id="frame_5"]
+[ext_resource type="Texture2D" uid="uid://cxl0wvgsn8ag1" path="res://Assets/Entities/Player/Walking/Character Walk Animation 00.png" id="frame_6"]
+[ext_resource type="Texture2D" uid="uid://bw30iqlc4jaft" path="res://Assets/Entities/Player/Walking/Character Walk Animation 01.png" id="frame_7"]
+[ext_resource type="Texture2D" uid="uid://cei4eef34di51" path="res://Assets/Entities/Player/Walking/Character Walk Animation 02.png" id="frame_8"]
+[ext_resource type="Texture2D" uid="uid://bs0sggmsngcgj" path="res://Assets/Entities/Player/Walking/Character Walk Animation 03.png" id="frame_9"]
+[ext_resource type="Texture2D" uid="uid://blmxi5cfiw43q" path="res://Assets/Entities/Player/Walking/Character Walk Animation 04.png" id="frame_10"]
+[ext_resource type="Texture2D" uid="uid://cq83qnv0eej7c" path="res://Assets/Entities/Player/Walking/Character Walk Animation 05.png" id="frame_11"]
+[ext_resource type="Texture2D" uid="uid://dj001p3yxe4ag" path="res://Assets/Entities/Player/Walking/Character Walk Animation 06.png" id="frame_12"]
+[ext_resource type="Texture2D" uid="uid://b16ua23lpn5x5" path="res://Assets/Entities/Player/Walking/Character Walk Animation 07.png" id="frame_13"]
+[ext_resource type="Texture2D" uid="uid://x83f2r23vxrv" path="res://Assets/Entities/Player/Walking-To-Idle/Walk to Idle 00.png" id="frame_14"]
+[ext_resource type="Texture2D" uid="uid://ble3abeyjwge3" path="res://Assets/Entities/Player/Walking-To-Idle/Walk to Idle 01.png" id="frame_15"]
+[ext_resource type="Texture2D" uid="uid://ddr0l0o06i6gd" path="res://Assets/Entities/Player/Walking-To-Idle/Walk to Idle 02.png" id="frame_16"]
+[ext_resource type="Texture2D" uid="uid://dun0lfd2m8i6" path="res://Assets/Entities/Player/Walking-To-Idle/Walk to Idle 03.png" id="frame_17"]
+[ext_resource type="Texture2D" uid="uid://5aupo4rqtcy3" path="res://Assets/Entities/Player/Walking-To-Idle/Walk to Idle 04.png" id="frame_18"]
+[ext_resource type="Texture2D" uid="uid://c6mr1ansqmv3v" path="res://Assets/Entities/Player/Jumping/Character Jump 00.png" id="frame_19"]
+[ext_resource type="Texture2D" uid="uid://0mjd8b3nb0ut" path="res://Assets/Entities/Player/Jumping/Character Jump 01.png" id="frame_20"]
+[ext_resource type="Texture2D" uid="uid://c0i2mcka3e1r2" path="res://Assets/Entities/Player/Jumping/Character Jump 02.png" id="frame_21"]
+[ext_resource type="Texture2D" uid="uid://op6n24rtxgbt" path="res://Assets/Entities/Player/Jumping/Character Jump 03.png" id="frame_22"]
+[ext_resource type="Texture2D" uid="uid://dp47cnsfov1j2" path="res://Assets/Entities/Player/Jumping/Character Jump 04.png" id="frame_23"]
+[ext_resource type="Texture2D" uid="uid://cmsjhkt63y3ga" path="res://Assets/Entities/Player/Jumping/Character Jump 05.png" id="frame_24"]
+[ext_resource type="Texture2D" uid="uid://0yo38gfv8lqx" path="res://Assets/Entities/Player/Jumping-To-Land/Jump to Land 00.png" id="frame_25"]
+[ext_resource type="Texture2D" uid="uid://vtsvev5rn4v5" path="res://Assets/Entities/Player/Jumping-To-Land/Jump to Land 01.png" id="frame_26"]
+[ext_resource type="Texture2D" uid="uid://1vxauo6ahfd1" path="res://Assets/Entities/Player/Jumping-To-Land/Jump to Land 02.png" id="frame_27"]
+[ext_resource type="Texture2D" uid="uid://87aq6gm6udx3" path="res://Assets/Entities/Player/Jumping-To-Land/Jump to Land 03.png" id="frame_28"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("frame_0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_5")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("frame_19")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_24")
+}],
+"loop": 1,
+"name": &"Jumping",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("frame_25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_28")
+}],
+"loop": 0,
+"name": &"Jumping-To-Land",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("frame_6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_9")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_13")
+}],
+"loop": 1,
+"name": &"Walking",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("frame_14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("frame_15")
+}, {
+"duration": 0.75,
+"texture": ExtResource("frame_16")
+}, {
+"duration": 0.75,
+"texture": ExtResource("frame_17")
+}, {
+"duration": 0.75,
+"texture": ExtResource("frame_18")
+}],
+"loop": 0,
+"name": &"Walking-To-Idle",
+"speed": 10.0
+}]

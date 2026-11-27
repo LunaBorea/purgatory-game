@@ -1,0 +1,286 @@
+[gd_scene format=3 uid="uid://bmi6f483rs2eo"]
+
+[ext_resource type="Script" uid="uid://bhjrhmw7a7kiy" path="res://MyChanges/Background/forest_background.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://co2ulwfi4ddta" path="res://MyChanges/Background/Images/01_sky.png" id="2_sky"]
+[ext_resource type="Texture2D" uid="uid://d1ql302d67fqy" path="res://MyChanges/Background/Images/02_far_trees.png" id="3_far"]
+[ext_resource type="Texture2D" uid="uid://d3qe8vvbnaoej" path="res://MyChanges/Background/Images/03_mid_trees.png" id="4_mid"]
+[ext_resource type="Texture2D" uid="uid://cy47hxdilnw6v" path="res://MyChanges/Background/Images/05_near_trees.png" id="6_near"]
+[ext_resource type="Texture2D" uid="uid://cy037ehvwve2q" path="res://MyChanges/Background/Images/06_ground.png" id="7_ground"]
+[ext_resource type="Script" uid="uid://dq86fbswaqgcl" path="res://MyChanges/Background/firefly_swarm.gd" id="10_fireflies"]
+[ext_resource type="Shader" uid="uid://55umcthtrc4u" path="res://MyChanges/Background/crisp_edges.gdshader" id="11_crisp"]
+
+[sub_resource type="ShaderMaterial" id="CrispFar"]
+shader = ExtResource("11_crisp")
+shader_parameter/threshold = 0.35
+shader_parameter/sharpness = 0.35
+shader_parameter/edge_softness = 2.0
+
+[sub_resource type="ShaderMaterial" id="CrispMid"]
+shader = ExtResource("11_crisp")
+shader_parameter/threshold = 0.4
+shader_parameter/sharpness = 0.0
+shader_parameter/edge_softness = 1.0
+
+[sub_resource type="ShaderMaterial" id="CrispNear"]
+shader = ExtResource("11_crisp")
+shader_parameter/threshold = 0.45
+shader_parameter/sharpness = 0.0
+shader_parameter/edge_softness = 1.0
+
+[sub_resource type="ShaderMaterial" id="FarGround"]
+shader = ExtResource("11_crisp")
+shader_parameter/threshold = 0.45
+shader_parameter/sharpness = 0.0
+shader_parameter/edge_softness = 1.0
+shader_parameter/recolor = true
+shader_parameter/color = Color(0.11, 0.145, 0.21, 1)
+
+[sub_resource type="Gradient" id="FarGroundGradient"]
+offsets = PackedFloat32Array(0, 0.35, 1)
+colors = PackedColorArray(0.11, 0.145, 0.21, 1, 0.065, 0.085, 0.13, 1, 0.02, 0.03, 0.05, 1)
+
+[sub_resource type="GradientTexture2D" id="FarGroundTexture"]
+gradient = SubResource("FarGroundGradient")
+width = 4
+height = 256
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="MistGradient"]
+offsets = PackedFloat32Array(0, 0.7, 1)
+colors = PackedColorArray(0.36, 0.42, 0.5, 0, 0.36, 0.42, 0.5, 0.42, 0.36, 0.42, 0.5, 0)
+
+[sub_resource type="GradientTexture2D" id="MistTexture"]
+gradient = SubResource("MistGradient")
+width = 4
+height = 128
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="LowMistGradient"]
+offsets = PackedFloat32Array(0, 0.55, 1)
+colors = PackedColorArray(0.3, 0.36, 0.44, 0, 0.3, 0.36, 0.44, 0.2, 0.3, 0.36, 0.44, 0)
+
+[sub_resource type="GradientTexture2D" id="LowMistTexture"]
+gradient = SubResource("LowMistGradient")
+width = 4
+height = 128
+fill_to = Vector2(0, 1)
+
+; HOW THIS WORKS
+; Every layer is a full-resolution 7680x1080 picture drawn at 0.75 (= 5760 x 810 px in the world),
+; almost 1 picture pixel per screen pixel, so it is sharp.
+; Each layer is drawn twice (second copy mirrored) and repeats every 11520 px, so it never ends.
+; Parallax2D scroll_scale.x = how fast the layer slides sideways with the camera.
+; metadata/vertical_parallax = how much it follows the camera up and down.
+; metadata/cover_top = world y of the top of the picture: forest_background.gd makes sure this
+; top always stays above the screen (any window size, fullscreen, zoom or jump height).
+; Trees, mist and ground share the same values, so tree roots always stay planted in the ground.
+
+[node name="ForestBackground" type="Node2D"]
+z_index = -4000
+texture_filter = 4
+script = ExtResource("1_script")
+
+[node name="Fills" type="Node2D" parent="."]
+
+[node name="AbyssFill" type="ColorRect" parent="Fills"]
+offset_left = -8000.0
+offset_top = 560.0
+offset_right = 8000.0
+offset_bottom = 8000.0
+mouse_filter = 2
+color = Color(0.012, 0.014, 0.02, 1)
+
+[node name="Sky" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.03, 1)
+repeat_size = Vector2(11520, 0)
+repeat_times = 2
+metadata/vertical_parallax = 0.08
+metadata/cover_top = 0.0
+
+[node name="Lift" type="Node2D" parent="Sky"]
+
+[node name="SkyFill" type="ColorRect" parent="Sky/Lift"]
+offset_left = -2590.0
+offset_top = -3000.0
+offset_right = 8930.0
+offset_bottom = 3.0
+mouse_filter = 2
+color = Color(0.035, 0.05, 0.075, 1)
+
+[node name="A" type="Sprite2D" parent="Sky/Lift"]
+position = Vector2(-2590, 0)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_sky")
+centered = false
+
+[node name="B" type="Sprite2D" parent="Sky/Lift"]
+position = Vector2(3170, 0)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_sky")
+centered = false
+flip_h = true
+
+[node name="FarTrees" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.12, 1)
+repeat_size = Vector2(11520, 0)
+repeat_times = 2
+metadata/vertical_parallax = 0.36
+metadata/cover_top = -202.0
+
+[node name="Lift" type="Node2D" parent="FarTrees"]
+
+[node name="A" type="Sprite2D" parent="FarTrees/Lift"]
+material = SubResource("CrispFar")
+position = Vector2(0, -202)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_far")
+centered = false
+
+[node name="B" type="Sprite2D" parent="FarTrees/Lift"]
+material = SubResource("CrispFar")
+position = Vector2(5760, -202)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_far")
+centered = false
+flip_h = true
+
+[node name="MidTrees" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.25, 1)
+repeat_size = Vector2(11520, 0)
+repeat_times = 2
+metadata/vertical_parallax = 0.36
+metadata/cover_top = -202.0
+
+[node name="Lift" type="Node2D" parent="MidTrees"]
+
+[node name="A" type="Sprite2D" parent="MidTrees/Lift"]
+material = SubResource("CrispMid")
+position = Vector2(0, -202)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_mid")
+centered = false
+
+[node name="B" type="Sprite2D" parent="MidTrees/Lift"]
+material = SubResource("CrispMid")
+position = Vector2(5760, -202)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_mid")
+centered = false
+flip_h = true
+
+[node name="Mist" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.3, 1)
+repeat_size = Vector2(11520, 0)
+repeat_times = 2
+metadata/vertical_parallax = 0.36
+metadata/cover_top = -202.0
+
+[node name="Lift" type="Node2D" parent="Mist"]
+
+[node name="Fog" type="TextureRect" parent="Mist/Lift"]
+offset_top = 380.0
+offset_right = 11520.0
+offset_bottom = 515.0
+mouse_filter = 2
+texture = SubResource("MistTexture")
+expand_mode = 1
+
+[node name="FarFireflies" type="Node2D" parent="."]
+script = ExtResource("10_fireflies")
+count = 12
+parallax = 0.3
+vertical_parallax = 0.25
+band_top = 60.0
+band_bottom = 470.0
+size_min = 14.0
+size_max = 24.0
+speed_min = 2.0
+speed_max = 7.0
+brightness = 0.85
+
+[node name="NearTrees" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.45, 1)
+repeat_size = Vector2(11520, 0)
+repeat_times = 2
+metadata/vertical_parallax = 0.36
+metadata/cover_top = -202.0
+
+[node name="Lift" type="Node2D" parent="NearTrees"]
+
+[node name="A" type="Sprite2D" parent="NearTrees/Lift"]
+material = SubResource("CrispNear")
+position = Vector2(0, -202)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("6_near")
+centered = false
+
+[node name="B" type="Sprite2D" parent="NearTrees/Lift"]
+material = SubResource("CrispNear")
+position = Vector2(5760, -202)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("6_near")
+centered = false
+flip_h = true
+
+[node name="Ground" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.6, 1)
+repeat_size = Vector2(11520, 0)
+repeat_times = 2
+metadata/vertical_parallax = 0.36
+metadata/cover_top = -202.0
+
+[node name="Lift" type="Node2D" parent="Ground"]
+
+[node name="EarthBelow" type="TextureRect" parent="Ground/Lift"]
+offset_top = 572.0
+offset_right = 11520.0
+offset_bottom = 1400.0
+mouse_filter = 2
+texture = SubResource("FarGroundTexture")
+expand_mode = 1
+
+[node name="A" type="Sprite2D" parent="Ground/Lift"]
+material = SubResource("FarGround")
+position = Vector2(0, -234)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("7_ground")
+centered = false
+
+[node name="B" type="Sprite2D" parent="Ground/Lift"]
+material = SubResource("FarGround")
+position = Vector2(5760, -234)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("7_ground")
+centered = false
+flip_h = true
+
+[node name="LowMist" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.55, 1)
+repeat_size = Vector2(11520, 0)
+repeat_times = 2
+metadata/vertical_parallax = 0.36
+metadata/cover_top = -202.0
+
+[node name="Lift" type="Node2D" parent="LowMist"]
+
+[node name="Fog" type="TextureRect" parent="LowMist/Lift"]
+offset_top = 425.0
+offset_right = 11520.0
+offset_bottom = 505.0
+mouse_filter = 2
+texture = SubResource("LowMistTexture")
+expand_mode = 1
+
+[node name="NearFireflies" type="Node2D" parent="."]
+script = ExtResource("10_fireflies")
+count = 7
+parallax = 0.7
+vertical_parallax = 0.6
+band_top = 200.0
+band_bottom = 470.0
+size_min = 26.0
+size_max = 40.0
+speed_min = 3.0
+speed_max = 10.0
+brightness = 0.95
+random_seed = 2

@@ -1,0 +1,47 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://bg81v0ep40pxn" path="res://Scenes/Levels/main.tscn" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://bmi6f483rs2eo" path="res://MyChanges/Background/forest_background.tscn" id="2_forest"]
+[ext_resource type="Script" uid="uid://ddqlrgy0vvp4m" path="res://MyChanges/Floor/deep_floor.gd" id="3_floor"]
+[ext_resource type="Script" uid="uid://dq86fbswaqgcl" path="res://MyChanges/Background/firefly_swarm.gd" id="4_fireflies"]
+[ext_resource type="Script" uid="uid://ds04023x55b55" path="res://MyChanges/Water/water.gd" id="5_water"]
+[ext_resource type="Script" uid="uid://bb2tk8ej2pasb" path="res://MyChanges/Effects/glow_and_shadows.gd" id="6_effects"]
+[ext_resource type="Script" path="res://MyChanges/Platforms/platforms.gd" id="7_platforms"]
+[ext_resource type="Script" path="res://MyChanges/Effects/teammate_art.gd" id="8_teammate_art"]
+
+[node name="MainWithForest" type="Node"]
+
+[node name="ForestBackground" parent="." instance=ExtResource("2_forest")]
+
+[node name="Main" parent="." instance=ExtResource("1_main")]
+
+[node name="Platforms" type="Node" parent="."]
+script = ExtResource("7_platforms")
+
+[node name="DeepFloor" type="Node" parent="."]
+script = ExtResource("3_floor")
+
+[node name="Water" type="Node2D" parent="."]
+z_index = 500
+script = ExtResource("5_water")
+
+[node name="GlowAndShadows" type="Node" parent="."]
+script = ExtResource("6_effects")
+
+[node name="FrontFireflies" type="Node2D" parent="."]
+z_index = 4000
+script = ExtResource("4_fireflies")
+count = 3
+parallax = 1.12
+vertical_parallax = 1.0
+band_top = 330.0
+band_bottom = 500.0
+size_min = 34.0
+size_max = 48.0
+speed_min = 4.0
+speed_max = 10.0
+brightness = 0.8
+random_seed = 3
+
+[node name="TeammateArt" type="Node" parent="."]
+script = ExtResource("8_teammate_art")
