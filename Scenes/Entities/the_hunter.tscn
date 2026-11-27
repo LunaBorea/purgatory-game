@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cuixeh0uak6yi"]
+
+[ext_resource type="Script" uid="uid://g2xt7cev3e10" path="res://Scripts/the_hunter.gd" id="1_script"]
+[ext_resource type="SpriteFrames" uid="uid://b3txkgfn4a7by" path="res://Assets/TheHunter/the_hunter_animations.tres" id="2_frames"]
+
+[sub_resource type="CircleShape2D" id="DetectionCircle"]
+radius = 190.0
+
+[sub_resource type="CircleShape2D" id="BiteCircle"]
+radius = 54.0
+
+[node name="TheHunter" type="Node2D" unique_id=1648377916 groups=[]]
+script = ExtResource("1_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2076656852]
+texture_filter = 1
+position = Vector2(0, -70)
+scale = Vector2(0.1, 0.1)
+sprite_frames = ExtResource("2_frames")
+animation = &"TheHunterSpike"
+autoplay = "TheHunterSpike"
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=972854159]
+position = Vector2(0, -70)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=2040122898]
+shape = SubResource("DetectionCircle")
+
+[node name="BiteArea" type="Area2D" parent="." unique_id=327364186]
+position = Vector2(0, -70)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BiteArea" unique_id=613896317]
+position = Vector2(0, 10)
+shape = SubResource("BiteCircle")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Scripts/watching_tree.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://Assets/Objects/WatchingTree/tree7.png" id="2_frame"]
+[ext_resource type="Shader" path="res://Assets/Objects/WatchingTree/tree_blend.gdshader" id="3_shader"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tree"]
+shader = ExtResource("3_shader")
+shader_parameter/frame_blend = 0.0
+shader_parameter/next_frame = ExtResource("2_frame")
+
+[node name="WatchingTree" type="Sprite2D"]
+material = SubResource("ShaderMaterial_tree")
+texture = ExtResource("2_frame")
+script = ExtResource("1_script")

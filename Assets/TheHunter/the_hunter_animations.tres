@@ -1,0 +1,184 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://b3txkgfn4a7by"]
+
+[ext_resource type="Texture2D" uid="uid://dra017444xvwe" path="res://Assets/TheHunterBite/fotograma0000.png" id="bite_00"]
+[ext_resource type="Texture2D" uid="uid://8fngllgb3sjj" path="res://Assets/TheHunterBite/fotograma0001.png" id="bite_01"]
+[ext_resource type="Texture2D" uid="uid://dv3snpuecgqgn" path="res://Assets/TheHunterBite/fotograma0002.png" id="bite_02"]
+[ext_resource type="Texture2D" uid="uid://cbfcj3javst32" path="res://Assets/TheHunterBite/fotograma0003.png" id="bite_03"]
+[ext_resource type="Texture2D" uid="uid://bbp5if40aqen3" path="res://Assets/TheHunterBite/fotograma0004.png" id="bite_04"]
+[ext_resource type="Texture2D" uid="uid://3ggxxaosm2g6" path="res://Assets/TheHunterBite/fotograma0005.png" id="bite_05"]
+[ext_resource type="Texture2D" uid="uid://ior4cdvysakm" path="res://Assets/TheHunterBite/fotograma0006.png" id="bite_06"]
+[ext_resource type="Texture2D" uid="uid://dalnnvmerhfas" path="res://Assets/TheHunterBite/fotograma0007.png" id="bite_07"]
+[ext_resource type="Texture2D" uid="uid://na3uocrmc06h" path="res://Assets/TheHunterBite/fotograma0008.png" id="bite_08"]
+[ext_resource type="Texture2D" uid="uid://dgrojwx1qahf8" path="res://Assets/TheHunterBite/fotograma0009.png" id="bite_09"]
+[ext_resource type="Texture2D" uid="uid://b5l32lve446y6" path="res://Assets/TheHunterBite/fotograma0010.png" id="bite_10"]
+[ext_resource type="Texture2D" uid="uid://vpb76t7y7svj" path="res://Assets/TheHunterBite/fotograma0011.png" id="bite_11"]
+[ext_resource type="Texture2D" uid="uid://l3bose2u677b" path="res://Assets/TheHunterBite/fotograma0012.png" id="bite_12"]
+[ext_resource type="Texture2D" uid="uid://i2awsp1b7idq" path="res://Assets/TheHunterJump/fotograma0000.png" id="jump_00"]
+[ext_resource type="Texture2D" uid="uid://c88pjptehyf0d" path="res://Assets/TheHunterJump/fotograma0001.png" id="jump_01"]
+[ext_resource type="Texture2D" uid="uid://cy06jbcb6jswx" path="res://Assets/TheHunterJump/fotograma0002.png" id="jump_02"]
+[ext_resource type="Texture2D" uid="uid://bf3f7fxdm5x8m" path="res://Assets/TheHunterJump/fotograma0003.png" id="jump_03"]
+[ext_resource type="Texture2D" uid="uid://ban8yhupelllw" path="res://Assets/TheHunterJump/fotograma0004.png" id="jump_04"]
+[ext_resource type="Texture2D" uid="uid://7b482q3thgj8" path="res://Assets/TheHunterJump/fotograma0005.png" id="jump_05"]
+[ext_resource type="Texture2D" uid="uid://cb0ap5layjkiv" path="res://Assets/TheHunterJump/fotograma0006.png" id="jump_06"]
+[ext_resource type="Texture2D" uid="uid://c0j5yuxjidv41" path="res://Assets/TheHunterJump/fotograma0007.png" id="jump_07"]
+[ext_resource type="Texture2D" uid="uid://62mbqvbrewnb" path="res://Assets/TheHunterJump/fotograma0008.png" id="jump_08"]
+[ext_resource type="Texture2D" uid="uid://cwk5r3756jhn8" path="res://Assets/TheHunterJump/fotograma0009.png" id="jump_09"]
+[ext_resource type="Texture2D" uid="uid://drkhier31grck" path="res://Assets/TheHunterJump/fotograma0010.png" id="jump_10"]
+[ext_resource type="Texture2D" uid="uid://ckrx2v4vfvp8q" path="res://Assets/TheHunterJump/fotograma0011.png" id="jump_11"]
+[ext_resource type="Texture2D" uid="uid://huovludd0wwf" path="res://Assets/TheHunterJump/fotograma0012.png" id="jump_12"]
+[ext_resource type="Texture2D" uid="uid://o8vkqovlkqs1" path="res://Assets/TheHunterJump/fotograma0013.png" id="jump_13"]
+[ext_resource type="Texture2D" uid="uid://bwvi23q8l18gq" path="res://Assets/TheHunterSpike/fotograma0000.png" id="spike_00"]
+[ext_resource type="Texture2D" uid="uid://bt3ntnygn27ww" path="res://Assets/TheHunterSpike/fotograma0001.png" id="spike_01"]
+[ext_resource type="Texture2D" uid="uid://colo4p2qd3qqg" path="res://Assets/TheHunterSpike/fotograma0002.png" id="spike_02"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("bite_00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("bite_01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("bite_02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("bite_03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("bite_04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("bite_05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("bite_06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("bite_07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("bite_08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("bite_09")
+}, {
+"duration": 1.0,
+"texture": ExtResource("bite_10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("bite_11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("bite_12")
+}],
+"loop": 0,
+"name": &"TheHunterBite",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("jump_00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_09")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_13")
+}],
+"loop": 0,
+"name": &"TheHunterJump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("jump_13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_09")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("jump_01")
+}],
+"loop": 0,
+"name": &"TheHunterJumpReverse",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("spike_00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("spike_01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("spike_02")
+}],
+"loop": 1,
+"name": &"TheHunterSpike",
+"speed": 5.0
+}]

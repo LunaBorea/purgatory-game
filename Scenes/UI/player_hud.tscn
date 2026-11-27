@@ -1,0 +1,129 @@
+[gd_scene load_steps=18 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/UI/health_sanity_full.png" id="1_full"]
+[ext_resource type="Texture2D" path="res://Assets/UI/health_sanity_empty.png" id="2_empty"]
+[ext_resource type="Texture2D" path="res://Assets/UI/sanity_full_strip.png" id="4_sanity"]
+[ext_resource type="Script" path="res://Scenes/UI/player_hud.gd" id="3_script"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui_background"]
+atlas = ExtResource("2_empty")
+region = Rect2(164, 0, 692, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flower_particle"]
+atlas = ExtResource("1_full")
+region = Rect2(404, 72, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flower_particle_empty"]
+atlas = ExtResource("2_empty")
+region = Rect2(404, 72, 96, 84)
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_flower"]
+direction = Vector3(-1, 0, 0)
+spread = 16.0
+initial_velocity_min = 10.0
+initial_velocity_max = 18.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.04
+scale_max = 0.06
+color = Color(1, 0.92, 0.68, 1)
+
+[sub_resource type="Shader" id="Shader_sanity_fill"]
+code = "shader_type canvas_item;\nuniform float depletion : hint_range(0.0, 1.0) = 0.0;\nuniform vec4 red_tint : source_color = vec4(0.88, 0.10, 0.035, 1.0);\nvoid fragment() {\n\tvec4 color = texture(TEXTURE, UV) * COLOR;\n\tfloat edge = 1.0 - depletion;\n\tfloat fill_mask = smoothstep(edge - 0.004, edge + 0.004, UV.x);\n\tfloat fill_width = max(depletion, 0.0001);\n\tfloat distance_from_start = clamp((1.0 - UV.x) / fill_width, 0.0, 1.0);\n\tfloat red_amount = depletion * (1.0 - distance_from_start);\n\tcolor.rgb = mix(color.rgb, red_tint.rgb, red_amount);\n\tcolor.a *= fill_mask;\n\tCOLOR = color;\n}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sanity_fill"]
+shader = SubResource("Shader_sanity_fill")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_health_loss"]
+atlas = ExtResource("1_full")
+region = Rect2(428, 181, 410, 19)
+
+[sub_resource type="Shader" id="Shader_health_loss"]
+code = "shader_type canvas_item;\nuniform float health_fraction = 1.0;\nvoid fragment() {\n\tvec4 color = texture(TEXTURE, UV) * COLOR;\n\tfloat loss = smoothstep(health_fraction, min(health_fraction + 0.015, 1.01), UV.x);\n\tcolor.a *= loss;\n\tCOLOR = color;\n}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_health_loss"]
+shader = SubResource("Shader_health_loss")
+
+[sub_resource type="Shader" id="Shader_orb_vignette"]
+code = "shader_type canvas_item;\nuniform float strength : hint_range(0.0, 0.3) = 0.0;\nuniform float edge_width : hint_range(0.01, 0.5) = 0.12;\nuniform float softness : hint_range(0.01, 0.5) = 0.16;\nvoid fragment() {\n\tfloat edge_distance = min(min(UV.x, 1.0 - UV.x), min(UV.y, 1.0 - UV.y));\n\tfloat vignette = 1.0 - smoothstep(edge_width, edge_width + softness, edge_distance);\n\tCOLOR = vec4(0.0, 0.0, 0.0, strength * vignette);\n}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_orb_vignette"]
+shader = SubResource("Shader_orb_vignette")
+[sub_resource type="Shader" id="Shader_damage_outline"]
+code = "shader_type canvas_item;\nuniform float strength : hint_range(0.0, 1.0) = 0.0;\nvoid fragment() {\n\tfloat edge_distance = min(min(UV.x, 1.0 - UV.x), min(UV.y, 1.0 - UV.y));\n\tfloat border = 1.0 - smoothstep(0.012, 0.035, edge_distance);\n\tCOLOR = vec4(0.95, 0.025, 0.04, border * strength * 0.8);\n}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_damage_outline"]
+shader = SubResource("Shader_damage_outline")
+
+[node name="PlayerHUD" type="CanvasLayer"]
+
+[node name="Vignette" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+material = SubResource("ShaderMaterial_orb_vignette")
+[node name="DamageOutline" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_damage_outline")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ElapsedTime" type="Label" parent="."]
+offset_left = 28.0
+offset_top = 24.0
+offset_right = 250.0
+offset_bottom = 66.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.98, 0.9, 0.76, 1)
+theme_override_colors/font_outline_color = Color(0.08, 0.05, 0.09, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 28
+text = "Time: 0:00"
+[node name="HUDRoot" type="Control" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -260.0
+offset_right = 712.0
+offset_bottom = -4.0
+scale = Vector2(0.75, 0.75)
+script = ExtResource("3_script")
+recovery_flower_texture = SubResource("AtlasTexture_flower_particle_empty")
+
+[node name="ElapsedTimer" type="Timer" parent="HUDRoot"]
+wait_time = 1.0
+[node name="BaseUI" type="TextureRect" parent="HUDRoot"]
+offset_right = 692.0
+offset_bottom = 256.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_ui_background")
+
+[node name="SanityFill" type="TextureRect" parent="HUDRoot"]
+offset_left = 240.0
+offset_top = 70.0
+offset_right = 605.0
+offset_bottom = 160.0
+mouse_filter = 2
+texture = ExtResource("4_sanity")
+material = SubResource("ShaderMaterial_sanity_fill")
+
+[node name="HealthLoss" type="TextureRect" parent="HUDRoot"]
+offset_left = 264.0
+offset_top = 181.0
+offset_right = 674.0
+offset_bottom = 200.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_health_loss")
+material = SubResource("ShaderMaterial_health_loss")
+
+[node name="FlowerParticles" type="GPUParticles2D" parent="HUDRoot"]
+position = Vector2(605, 115)
+emitting = false
+amount = 7
+lifetime = 0.7
+texture = SubResource("AtlasTexture_flower_particle")
+process_material = SubResource("ParticleProcessMaterial_flower")

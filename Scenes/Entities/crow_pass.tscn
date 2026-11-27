@@ -1,0 +1,48 @@
+[gd_scene load_steps=18 format=3]
+
+[ext_resource type="Script" path="res://Scripts/crow_pass.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://Assets/Entities/CrowPass/crow1.png" id="frame1"]
+[ext_resource type="Texture2D" path="res://Assets/Entities/CrowPass/crow2.png" id="frame2"]
+[ext_resource type="Texture2D" path="res://Assets/Entities/CrowPass/crow3.png" id="frame3"]
+[ext_resource type="Texture2D" path="res://Assets/Entities/CrowPass/crow4.png" id="frame4"]
+[ext_resource type="Texture2D" path="res://Assets/Entities/CrowPass/crow5.png" id="frame5"]
+[ext_resource type="Texture2D" path="res://Assets/Entities/CrowPass/crow6.png" id="frame6"]
+[ext_resource type="Texture2D" path="res://Assets/Entities/CrowPass/crow7.png" id="frame7"]
+[ext_resource type="Texture2D" path="res://Assets/Entities/CrowPass/crow8.png" id="frame8"]
+[ext_resource type="Texture2D" path="res://Assets/Entities/CrowPass/crow9.png" id="frame9"]
+[ext_resource type="Texture2D" path="res://Assets/Entities/CrowPass/crow10.png" id="frame10"]
+[ext_resource type="Texture2D" path="res://Assets/Entities/CrowPass/crow11.png" id="frame11"]
+[ext_resource type="Texture2D" path="res://Assets/Entities/CrowPass/crow12.png" id="frame12"]
+[ext_resource type="Texture2D" path="res://Assets/Entities/CrowPass/crow13.png" id="frame13"]
+[ext_resource type="Texture2D" path="res://Assets/Entities/CrowPass/crow14.png" id="frame14"]
+[ext_resource type="Texture2D" path="res://Assets/Entities/CrowPass/crow15.png" id="frame15"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fly"]
+animations = [{
+"frames": [
+{"duration": 1.0, "texture": ExtResource("frame1")},
+{"duration": 1.0, "texture": ExtResource("frame2")},
+{"duration": 1.0, "texture": ExtResource("frame3")},
+{"duration": 1.0, "texture": ExtResource("frame4")},
+{"duration": 1.0, "texture": ExtResource("frame5")},
+{"duration": 1.0, "texture": ExtResource("frame6")},
+{"duration": 1.0, "texture": ExtResource("frame7")},
+{"duration": 1.0, "texture": ExtResource("frame8")},
+{"duration": 1.0, "texture": ExtResource("frame9")},
+{"duration": 1.0, "texture": ExtResource("frame10")},
+{"duration": 1.0, "texture": ExtResource("frame11")},
+{"duration": 1.0, "texture": ExtResource("frame12")},
+{"duration": 1.0, "texture": ExtResource("frame13")},
+{"duration": 1.0, "texture": ExtResource("frame14")},
+{"duration": 1.0, "texture": ExtResource("frame15")}
+],
+"loop": false,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[node name="CrowPass" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_fly")
+animation = &"fly"
+frame = 7
+script = ExtResource("1_script")

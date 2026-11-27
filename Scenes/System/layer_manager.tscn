@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bkhjuv1q4d3lk" path="res://Scripts/layer_manager.gd" id="1_wtgkg"]
 [ext_resource type="Texture2D" uid="uid://cojjwi8kgj6b1" path="res://Assets/Objects/horror_assets.png" id="2_7vt6x"]
+[ext_resource type="PackedScene" path="res://Scenes/Entities/orb_platform.tscn" id="orb_platform_scene"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7vt6x"]
 size = Vector2(4, 104)
@@ -438,6 +439,9 @@ texture = ExtResource("2_7vt6x")
 region_enabled = true
 region_rect = Rect2(959, 523, 888, 1695)
 
+[node name="OrbPlatform" parent="Layer2" unique_id=1216458802 instance=ExtResource("orb_platform_scene")]
+position = Vector2(640, 531)
+
 [node name="Layer1" type="Node2D" parent="." unique_id=990853741]
 metadata/_edit_lock_ = true
 
@@ -633,7 +637,7 @@ scale = Vector2(8, 1.75)
 color = Color(0.4345005, 0.3892141, 0.38226628, 1)
 
 [node name="TestObject" type="StaticBody2D" parent="Layer1" unique_id=1379521012 groups=["LayerCollider"]]
-position = Vector2(1304, 368)
+position = Vector2(1307, 379)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Layer1/TestObject" unique_id=119586349]
@@ -647,7 +651,7 @@ region_enabled = true
 region_rect = Rect2(959, 523, 888, 1695)
 
 [node name="TestObject4" type="StaticBody2D" parent="Layer1" unique_id=829473261 groups=["LayerCollider"]]
-position = Vector2(1432, 400)
+position = Vector2(1414, 410)
 scale = Vector2(1, 0.40000245)
 metadata/_edit_group_ = true
 
@@ -655,20 +659,6 @@ metadata/_edit_group_ = true
 shape = SubResource("RectangleShape2D_voe2a")
 
 [node name="Sprite2D" type="Sprite2D" parent="Layer1/TestObject4" unique_id=950447150]
-position = Vector2(-9.536743e-07, 4.4107437e-06)
-scale = Vector2(0.072072074, 0.066076696)
-texture = ExtResource("2_7vt6x")
-region_enabled = true
-region_rect = Rect2(959, 523, 888, 1695)
-
-[node name="TestObject2" type="StaticBody2D" parent="Layer1" unique_id=1143135879 groups=["LayerCollider"]]
-position = Vector2(1544, 368)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Layer1/TestObject2" unique_id=1331692329]
-shape = SubResource("RectangleShape2D_voe2a")
-
-[node name="Sprite2D" type="Sprite2D" parent="Layer1/TestObject2" unique_id=874133059]
 position = Vector2(-9.536743e-07, 4.4107437e-06)
 scale = Vector2(0.072072074, 0.066076696)
 texture = ExtResource("2_7vt6x")
@@ -683,6 +673,20 @@ metadata/_edit_group_ = true
 shape = SubResource("RectangleShape2D_voe2a")
 
 [node name="Sprite2D" type="Sprite2D" parent="Layer1/TestObject3" unique_id=1650059129]
+position = Vector2(-9.536743e-07, 4.4107437e-06)
+scale = Vector2(0.072072074, 0.066076696)
+texture = ExtResource("2_7vt6x")
+region_enabled = true
+region_rect = Rect2(959, 523, 888, 1695)
+
+[node name="TestObject5" type="StaticBody2D" parent="Layer1" unique_id=608561985 groups=["LayerCollider"]]
+position = Vector2(1918, 367)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Layer1/TestObject5" unique_id=484720793]
+shape = SubResource("RectangleShape2D_voe2a")
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer1/TestObject5" unique_id=933923813]
 position = Vector2(-9.536743e-07, 4.4107437e-06)
 scale = Vector2(0.072072074, 0.066076696)
 texture = ExtResource("2_7vt6x")

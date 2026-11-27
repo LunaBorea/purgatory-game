@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/pressure_plate.gd" id="1_script"]
+
+[sub_resource type="RectangleShape2D" id="PressurePlateDetectionShape"]
+size = Vector2(38, 10)
+
+[node name="PressurePlate" type="Area2D" groups=["CratePressurePlates"]]
+collision_layer = 0
+collision_mask = 7
+monitoring = true
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("PressurePlateDetectionShape")
+
+[node name="PlateBase" type="Polygon2D" parent="."]
+z_index = 1
+polygon = PackedVector2Array(-19, -4, 19, -4, 18, 1, -18, 1)
+color = Color(0.19, 0.15, 0.14, 1)
+
+[node name="PlateTop" type="Polygon2D" parent="."]
+z_index = 2
+position = Vector2(0, -5)
+polygon = PackedVector2Array(-18, -7, 18, -7, 18, -4, -18, -4)
+color = Color(0.58, 0.43, 0.29, 1)

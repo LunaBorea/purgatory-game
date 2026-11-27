@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Objects/TreeLeaves/tree_leaves1.png" id="frame1"]
+[ext_resource type="Texture2D" path="res://Assets/Objects/TreeLeaves/tree_leaves2.png" id="frame2"]
+[ext_resource type="Texture2D" path="res://Assets/Objects/TreeLeaves/tree_leaves3.png" id="frame3"]
+[ext_resource type="Texture2D" path="res://Assets/Objects/TreeLeaves/tree_leaves4.png" id="frame4"]
+
+[sub_resource type="SpriteFrames" id="LeavesFrames"]
+animations = [{
+"frames": [
+{"duration": 1.0, "texture": ExtResource("frame1")},
+{"duration": 1.0, "texture": ExtResource("frame2")},
+{"duration": 1.0, "texture": ExtResource("frame3")},
+{"duration": 1.0, "texture": ExtResource("frame4")},
+{"duration": 1.0, "texture": ExtResource("frame3")},
+{"duration": 1.0, "texture": ExtResource("frame2")}
+],
+"loop": true,
+"name": &"sway",
+"speed": 5.0
+}]
+
+[node name="TreeLeaves" type="AnimatedSprite2D"]
+sprite_frames = SubResource("LeavesFrames")
+animation = &"sway"
+autoplay = "sway"
